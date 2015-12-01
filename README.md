@@ -1,5 +1,5 @@
 # Elusen DB (Web UI)
-Elusen DB is a free, open-source application being developed by ClayFish Technologies.
+Elusen DB is a free, open-source application being developed by ClayFish Technologies. It's developmental web interface can be accessed on http://elusen.clay.fish or https://clay.fish/elusen-web (secure version).
 
 ## For Developers
 It is a one-page web-application built using AngularJS and many other free and/or open-source front-end libraries.
