@@ -29,6 +29,14 @@ app.config(['$routeProvider',
             //    templateUrl: 'partials/phone-detail.html',
             //    controller: 'PhoneDetailCtrl'
             //})
+            .when('/calculators', {
+                templateUrl: 'views/calculators/calculators.html',
+                controller: 'calculatorListCtrl'
+            })
+            .when('/calculators/gdm', {
+                templateUrl: 'views/calculators/gdm.html',
+                controller: 'gdmCalculatorCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

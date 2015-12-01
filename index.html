@@ -23,6 +23,8 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
     <meta charset="UTF-8">
     <title>Elusen DB</title>
 
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:300,300italic,700,700italic' rel='stylesheet'
+          type='text/css'>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.css">
     <link rel="stylesheet"
@@ -31,9 +33,15 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 </head>
 <body ng-app="app" ng-controller="defaultCtrl">
 
-<ng-include src="'views/includable/header.html'"></ng-include>
-<div ng-view></div>
-<ng-include src="'views/includable/footer.html'"></ng-include>
+<div class="container">
+    <ng-include src="'views/includable/header.html'"></ng-include>
+    <div class="row-fluid clearfix">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" ng-view></div>
+        <div class="col-lg-3 xs-hidden" style="background-color: #ccc"></div>
+    </div>
+
+    <ng-include src="'views/includable/footer.html'"></ng-include>
+</div>
 
 <!-- Use min version once development is over -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
@@ -50,6 +58,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 <!-- Controllers -->
 <script src="js/controllers/default_controller.js"></script>
 <script src="js/controllers/homepage_controllers.js"></script>
+<script src="js/controllers/calculator_controllers.js"></script>
 
 </body>
 </html>
