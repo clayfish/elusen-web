@@ -18,9 +18,20 @@
  */
 
 
-app.controller('defaultCtrl', ['$scope',
-    function ($scope) {
+app.controller('defaultCtrl', ['$scope', '$timeout', '$interval', 'helperService',
+    function ($scope, $timeout, $interval, helperService) {
+        $scope.message = '';
+        $interval(function() {
+            $scope.message = helperService.systemWideMessage;
+            $scope.messageTheme = helperService.systemWideMessageTheme;
+            $scope.showMessage = helperService.showSystemWideMessage;
 
+            if ($scope.showMessage) {
+                $timeout(function () {
+                    helperService.showSystemWideMessage = false;
+                }, 3000)
+            }
+        }, 1000);
     }
 ]);
 

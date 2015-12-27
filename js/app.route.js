@@ -20,10 +20,17 @@
 
 app.config(['$routeProvider',
     function ($routeProvider) {
-        $routeProvider.
-            when('/', {
+        $routeProvider.when('/', {
                 templateUrl: 'views/homepage.html',
                 controller: 'homepageCtrl'
+            })
+            .when('/login', {
+                templateUrl: 'views/login.html',
+                controller: 'loginCtrl'
+            })
+            .when('/about', {
+                templateUrl: 'views/about.html',
+                controller: 'aboutCtrl'
             })
             //.when('/phones/:phoneId', {
             //    templateUrl: 'partials/phone-detail.html',

@@ -21,6 +21,32 @@ body {
     font-family: 'Merriweather', serif;
 }
 
+.link:hover {
+    text-decoration: underline;
+    color: #23527c;
+}
+
+.link {
+    text-decoration: none;
+    color: #337ab7;
+    cursor: pointer;
+}
+
+.right-sidebar {
+    background-color: #ccc;
+    padding: 2%;
+    border-radius: 4px;
+    border: 1px solid #888;
+    /*box-shadow: 5px 5px 25px #888;*/
+}
+
+.login-box {
+    border: 1px solid #68BD68;
+    padding: 5%;
+    /*box-shadow: 5px 5px 25px #68A068;*/
+    border-radius: 25px;
+}
+
 .calculator {
     padding-bottom: 2%;
     border-bottom: 1px solid #ccc;
