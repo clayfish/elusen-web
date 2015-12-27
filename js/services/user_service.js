@@ -24,9 +24,10 @@ app.factory('userService', ['$http', 'helperService',
 
         var originalSuccessCallback = function(){};
         var originalErrorCallback = function(){};
+
         var loginSuccessCallback = function (data, status, headers, config) {
             // TODO Login and keep the cookie
-            helperService.setCookie();
+            helperService.setCookie(helperService.AUTHENTICATION_TOKEN_CONST, 'adwsedfswawra');
             originalSuccessCallback(data, status, headers, config);
         };
 
@@ -38,7 +39,23 @@ app.factory('userService', ['$http', 'helperService',
             originalErrorCallback(data, status, headers, config);
         };
 
+        var signUpSuccessCallback = loginSuccessCallback;
+        var signUpErrorCallback = function (data, status, headers, config) {
+            helperService.systemWideMessage = 'Could not sign up';
+            helperService.systemWideMessageTheme = 'danger';
+            helperService.showSystemWideMessage = true;
+            helperService.removeCookie(helperService.AUTHENTICATION_TOKEN_CONST);
+            originalErrorCallback(data, status, headers, config);
+        };
+
         service.signIn = function (username, password, successCallback, errorCallback) {
+            if(successCallback === undefined) {
+                successCallback = function () {};
+            }
+            if(errorCallback === undefined) {
+                errorCallback = function() {};
+            }
+
             originalSuccessCallback = successCallback;
             originalErrorCallback = errorCallback;
             if (helperService.config.apiServerEnabled) {
@@ -50,8 +67,24 @@ app.factory('userService', ['$http', 'helperService',
             }
         };
 
-        service.signUp = function (username, email, password) {
-            // TODO implement
+        service.signUp = function (username, email, password, successCallback, errorCallback) {
+            if(successCallback === undefined) {
+                successCallback = function () {};
+            }
+            if(errorCallback === undefined) {
+                errorCallback = function() {};
+            }
+
+            originalSuccessCallback = successCallback;
+            originalErrorCallback = errorCallback;
+
+            if(helperService.apiServerEnabled) {
+                $http.put(helperService.getApiUrl('register'), {username: username, email: email, password: password})
+                    .success(signUpSuccessCallback).error(signUpErrorCallback);
+            } else {
+                // Can't call the API yet
+                signUpErrorCallback({}, 404);
+            }
         };
 
         return service;

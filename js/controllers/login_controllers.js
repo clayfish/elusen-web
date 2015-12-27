@@ -35,8 +35,8 @@ app.controller('loginCtrl', ['$scope', 'userService', 'helperService',
 ]);
 
 
-app.controller('signUpCtrl', ['$scope', 'helperService',
-    function ($scope) {
-
+app.controller('signUpCtrl', ['$scope', 'userService', 'helperService',
+    function ($scope, userService, helperService) {
+        $scope.signUp = userService.signUp;
     }
 ]);
