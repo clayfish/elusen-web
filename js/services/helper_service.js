@@ -31,7 +31,8 @@ app.factory('helperService', ['$cookies', '$location', function ($cookies, $loca
     // TODO create a configuration page in the web UI to set these variables
     service.config = {
         baseUrl: 'https://clay.fish/elusen/api/',
-        apiVersion: 1
+        apiVersion: 1,
+        apiServerEnabled: false
     };
 
     // It acts like cookie wrapper and provides 3 methods to operate on cookies
@@ -48,7 +49,8 @@ app.factory('helperService', ['$cookies', '$location', function ($cookies, $loca
     };
 
     service.isLoggedIn = function () {
-        return !service.getCookie(service.AUTHENTICATION_TOKEN_CONST);
+        // Using double NOTs for returning only boolean
+        return !(!service.getCookie(service.AUTHENTICATION_TOKEN_CONST));
     };
 
     service.go = function (uri) {

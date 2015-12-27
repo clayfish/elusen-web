@@ -28,6 +28,14 @@ app.config(['$routeProvider',
                 templateUrl: 'views/login.html',
                 controller: 'loginCtrl'
             })
+            .when('/signUp', {
+                templateUrl: 'views/signUp.html',
+                controller: 'signUpCtrl'
+            })
+            .when('/help', {
+                templateUrl: 'views/help.html',
+                controller: 'helpCtrl'
+            })
             .when('/about', {
                 templateUrl: 'views/about.html',
                 controller: 'aboutCtrl'

@@ -32,6 +32,10 @@ app.controller('defaultCtrl', ['$scope', '$timeout', '$interval', 'helperService
                 }, 3000)
             }
         }, 1000);
+
+        $scope.isLoggedIn = helperService.isLoggedIn;
+        $scope.go = helperService.go;
+
     }
 ]);
 

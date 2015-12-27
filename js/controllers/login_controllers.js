@@ -24,7 +24,7 @@ app.controller('loginCtrl', ['$scope', 'userService', 'helperService',
         $scope.rememberMe = true;
 
         $scope.login = function () {
-            userService.signin($scope.username, $scope.password);
+            userService.signIn($scope.username, $scope.password);
             helperService.go('/');
         };
 

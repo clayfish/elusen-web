@@ -28,3 +28,10 @@ app.controller('homepageCtrl', ['$scope',
 app.controller('aboutCtrl', ['$scope', function ($scope) {
 
 }]);
+
+// Controller for "HELP" page
+app.controller('helpCtrl', ['$scope',
+    function ($scope) {
+
+    }
+]);

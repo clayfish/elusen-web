@@ -22,9 +22,12 @@ app.factory('userService', ['$http', 'helperService',
     function ($http, helperService) {
         var service = this;
 
+        var originalSuccessCallback = function(){};
+        var originalErrorCallback = function(){};
         var loginSuccessCallback = function (data, status, headers, config) {
             // TODO Login and keep the cookie
             helperService.setCookie();
+            originalSuccessCallback(data, status, headers, config);
         };
 
         var loginErrorCallback = function (data, status, headers, config) {
@@ -32,14 +35,22 @@ app.factory('userService', ['$http', 'helperService',
             helperService.systemWideMessageTheme = 'danger';
             helperService.showSystemWideMessage = true;
             helperService.removeCookie(helperService.AUTHENTICATION_TOKEN_CONST);
+            originalErrorCallback(data, status, headers, config);
         };
 
-        service.signin = function (username, password) {
-            $http.post(helperService.getApiUrl('authenticate'), {username: username, password: password})
-                .success(loginSuccessCallback).error(loginErrorCallback);
+        service.signIn = function (username, password, successCallback, errorCallback) {
+            originalSuccessCallback = successCallback;
+            originalErrorCallback = errorCallback;
+            if (helperService.config.apiServerEnabled) {
+                $http.post(helperService.getApiUrl('authenticate'), {username: username, password: password})
+                    .success(loginSuccessCallback).error(loginErrorCallback);
+            } else {
+                // Can't call API server yet
+                loginErrorCallback({}, 404);
+            }
         };
 
-        service.signup = function (username, email, password) {
+        service.signUp = function (username, email, password) {
             // TODO implement
         };
 
