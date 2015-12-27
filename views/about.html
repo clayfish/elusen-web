@@ -1,0 +1,49 @@
+<!--
+Elusen DB Web Interface
+Copyright (C) 2015-16  Ali Al-Ibrahim
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/.
+
+-->
+
+<h1>About Elusen DB</h1>
+<p>Elusen DB is to make the obstetrics database and mother and child care as affordable as possible. This is a free and
+    open-source alternative to other pricey database solutions.</p>
+<p>A list of contributors can be found <span class="link show-credits">here</span>.</p>
+
+<div class="credits hidden">
+    <h2>Credits</h2>
+    <div class="row clearfix">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <ul>
+                <li>Ali Al Ibrahim</li>
+                <li>Sergio Carmona</li>
+            </ul>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <ul>
+                <li>Shay Porat</li>
+                <!--<li><a href="https://clay.fish" target="_blank">ClayFish Technologies</a></li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('body').on('click', '.show-credits', function () {
+            $('.credits').removeClass('hidden');
+        })
+    });
+</script>

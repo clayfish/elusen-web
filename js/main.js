@@ -1,3 +1,4 @@
+
 /*
  Elusen DB Web Interface
  Copyright (C) 2015-16  Ali Al-Ibrahim
@@ -18,20 +19,8 @@
  */
 
 
-app.controller('homepageCtrl', ['$scope',
-    function ($scope) {
-        $scope.message = 'This is homepage.';
-    }
-]);
-
-// Controller for "ABOUT" page
-app.controller('aboutCtrl', ['$scope', function ($scope) {
-
-}]);
-
-// Controller for "HELP" page
-app.controller('helpCtrl', ['$scope',
-    function ($scope) {
-
-    }
-]);
+$(document).ready(function () {
+    $('body').on('click', '.dropdown-toggle', function (e) {
+        e.preventDefault();
+    })
+});

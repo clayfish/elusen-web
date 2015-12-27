@@ -17,21 +17,26 @@
 
  */
 
+app.controller('loginCtrl', ['$scope', 'userService', 'helperService',
+    function ($scope, userService, helperService) {
+        $scope.password ='';
+        $scope.username = '';
+        $scope.rememberMe = true;
 
-app.controller('homepageCtrl', ['$scope',
-    function ($scope) {
-        $scope.message = 'This is homepage.';
+        $scope.login = function () {
+            userService.signIn($scope.username, $scope.password);
+            helperService.go('/');
+        };
+
+        $scope.resetPassword = function () {
+
+        };
     }
 ]);
 
-// Controller for "ABOUT" page
-app.controller('aboutCtrl', ['$scope', function ($scope) {
 
-}]);
-
-// Controller for "HELP" page
-app.controller('helpCtrl', ['$scope',
-    function ($scope) {
-
+app.controller('signUpCtrl', ['$scope', 'userService', 'helperService',
+    function ($scope, userService, helperService) {
+        $scope.signUp = userService.signUp;
     }
 ]);
